@@ -1,5 +1,7 @@
 from random import randint
 
+from graphic_arts.start_game_banner import run_screensaver
+
 
 def attack(char_name, char_class) -> str:
     if char_class == 'warrior':
@@ -11,7 +13,7 @@ def attack(char_name, char_class) -> str:
     if char_class == 'healer':
         return (f'{char_name} нанёс урон противнику равный'
                 f'{5 + randint(-3, -1)}')
-    return None
+    return ''
 
 # генерирует кол-во очков защиты в зависимости от выбранного типа персонажа
 
@@ -42,7 +44,7 @@ def special(char_name, char_class) -> str:
     if char_class == 'healer':
         return (f'{char_name} применил специальное умение'
                 f'«Защита {10 + 30}»')
-    return None
+    return ''
 # Запускает цикл тренировки навыков персонажа
 
 
@@ -108,3 +110,16 @@ def main():  # Запуск игры и вызов вспомогательны�
 
 
 main()
+
+
+if __name__ == '__main__':
+    run_screensaver()
+    print('Приветствую тебя, искатель приключений!')
+    print('Прежде чем начать игру...')
+    char_name: str = input('...назови себя: ')
+    print(f'Здравствуй, {char_name}! '
+          'Сейчас твоя выносливость — 80, атака — 5 и защита — 10.')
+    print('Ты можешь выбрать один из трёх путей силы:')
+    print('Воитель, Маг, Лекарь')
+    char_class: str = choice_char_class()
+    print(start_training(char_name, char_class))
